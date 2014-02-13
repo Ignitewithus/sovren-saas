@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Resume xmlns="http://ns.hr-xml.org/2006-02-28" xmlns:sov="http://sovren.com/hr-xml/2006-02-28" xml:lang="en">
+  <UserArea>
+    <sov:ResumeUserArea>
+      <sov:Culture>
+        <sov:Language>en</sov:Language>
+        <sov:Country>US</sov:Country>
+        <sov:CultureInfo>en-US</sov:CultureInfo>
+      </sov:Culture>
+      <sov:ExperienceSummary>
+        <sov:Description>The candidate's experience appears to be concentrated in Engineering / General Engineering,
+          with exposure to QA and QC / Techniques. The candidate has 21 years of work experience, with no management
+          experience.
+        </sov:Description>
+        <sov:MonthsOfWorkExperience>257</sov:MonthsOfWorkExperience>
+        <sov:YearsOfWorkExperience>21</sov:YearsOfWorkExperience>
+        <sov:MonthsOfManagementExperience>0</sov:MonthsOfManagementExperience>
+        <sov:YearsOfManagementExperience>0</sov:YearsOfManagementExperience>
+        <sov:HighestManagementScore>0</sov:HighestManagementScore>
+        <sov:ExecutiveType>none</sov:ExecutiveType>
+        <sov:BestFitTaxonomies>
+          <sov:BestFitTaxonomy id="5" rootId="Sovren" name="Engineering" weight="34366.16" percentOfOverall="68.45"
+                               percentOfParent="68.45">
+            <sov:BestFitTaxonomy id="307" rootId="Sovren" name="General Engineering" weight="20853.60"
+                                 percentOfOverall="41.54" percentOfParent="60.68"/>
+            <sov:BestFitTaxonomy id="263" rootId="Sovren" name="Other" weight="10585.48" percentOfOverall="21.08"
+                                 percentOfParent="30.80"/>
+          </sov:BestFitTaxonomy>
+          <sov:BestFitTaxonomy id="69" rootId="Sovren" name="QA and QC" weight="6052.56" percentOfOverall="12.06"
+                               percentOfParent="12.06">
+            <sov:BestFitTaxonomy id="446" rootId="Sovren" name="Techniques" weight="3134.45" percentOfOverall="6.24"
+                                 percentOfParent="51.79"/>
+            <sov:BestFitTaxonomy id="941" rootId="Sovren" name="Other" weight="2874.35" percentOfOverall="5.73"
+                                 percentOfParent="47.49"/>
+          </sov:BestFitTaxonomy>
+        </sov:BestFitTaxonomies>
+      </sov:ExperienceSummary>
+      <sov:Sections>
+        <sov:Section starts="3" ends="7" sectionType="WORK HISTORY">PROFESSIONAL EXPERIENCE</sov:Section>
+        <sov:Section starts="8" ends="110" sectionType="WORK HISTORY">SUMMARY OF EXPERIENCE</sov:Section>
+        <sov:Section starts="111" ends="119" sectionType="EDUCATION">EDUCATION, CERTIFICATIONS AND TRAINING
+        </sov:Section>
+      </sov:Sections>
+      <sov:ParsedTextLength>6591</sov:ParsedTextLength>
+      <sov:ParseTime>1528</sov:ParseTime>
+      <sov:LicenseSerialNumber>4bed039f-c813-423c-86ea-5630f969c8ff</sov:LicenseSerialNumber>
+      <sov:ParserConfigurationString>
+        _100000_0_00000001_1101010110101101_1_0000000000000111111102000000000010000100000000000000000000
+      </sov:ParserConfigurationString>
+      <sov:ParserVersion>7.3.7300.2</sov:ParserVersion>
+    </sov:ResumeUserArea>
+  </UserArea>
+</Resume>
