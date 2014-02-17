@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = SovrenSaas::VERSION
   spec.authors       = ["Mark Montroy"]
   spec.email         = ["mark@ignitewithus.com"]
-  spec.description   = "This is a gem used for parsing resumes using the Sovren resume parser service. Based off the standalone Sovren gem by Eric Flemming"
-  spec.summary       = "This is a gem used for parsing resumes using the Sovren resume parser service."
+  spec.description   = "This is a gem used for parsing resumes using the Sovren Saas resume parser service. Based off the standalone Sovren gem by Eric Flemming"
+  spec.summary       = "This is a gem used for parsing resumes using the Sovren Saas resume parser service. Based off the standalone Sovren gem by Eric Flemming"
   spec.homepage      = "http://github.com/ignitewithus/sovren_saas-saas"
   spec.license       = "MIT"
 
