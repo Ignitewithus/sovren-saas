@@ -1,0 +1,192 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://services.resumeparsing.com/ResumeService.asmx?wsdl
+    body:
+      encoding: UTF-8
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Mon, 17 Feb 2014 16:05:49 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Content-Length:
+      - '8904'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:s=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\" xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\"
+        xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"http://services.resumeparsing.com/\"
+        xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\"
+        xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" targetNamespace=\"http://services.resumeparsing.com/\"
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">\r\n  <wsdl:types>\r\n    <s:schema
+        elementFormDefault=\"qualified\" targetNamespace=\"http://services.resumeparsing.com/\">\r\n
+        \     <s:element name=\"ParseResume\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"request\" type=\"tns:ParseResumeRequest\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"ParseResumeRequest\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"AccountId\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ServiceKey\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"FileBytes\" type=\"s:base64Binary\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"FileText\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Configuration\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"OutputXmlDoc\"
+        nillable=\"true\" type=\"s:boolean\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"OutputHtml\" nillable=\"true\" type=\"s:boolean\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"OutputRtf\" nillable=\"true\"
+        type=\"s:boolean\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"OutputWordXml\" nillable=\"true\" type=\"s:boolean\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"RevisionDate\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ParserVersion\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"ParseResumeResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ParseResumeResult\" type=\"tns:ParseResumeResponse\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:complexType name=\"ParseResumeResponse\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Code\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SubCode\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Message\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FileType\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Text\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TextCode\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Xml\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"XmlDoc\">\r\n            <s:complexType mixed=\"true\">\r\n
+        \             <s:sequence>\r\n                <s:any />\r\n              </s:sequence>\r\n
+        \           </s:complexType>\r\n          </s:element>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Html\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"HtmlCode\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Rtf\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"RtfCode\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"WordXml\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"WordXmlCode\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"UsesRemaining\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ParserVersion\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"FileExtension\" type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"GetAccountInfo\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"request\" type=\"tns:GetAccountInfoRequest\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"GetAccountInfoRequest\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"AccountId\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ServiceKey\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"GetAccountInfoResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetAccountInfoResult\" type=\"tns:GetAccountInfoResponse\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:complexType name=\"GetAccountInfoResponse\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Code\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SubCode\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Message\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalTransactions\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TransactionsRemaining\" type=\"s:int\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ExpirationDate\" type=\"s:string\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n    </s:schema>\r\n  </wsdl:types>\r\n  <wsdl:message
+        name=\"ParseResumeSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:ParseResume\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ParseResumeSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ParseResumeResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetAccountInfoSoapIn\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:GetAccountInfo\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetAccountInfoSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:GetAccountInfoResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:portType
+        name=\"ResumeServiceSoap\">\r\n    <wsdl:operation name=\"ParseResume\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Parse
+        a Resume/CV.</wsdl:documentation>\r\n      <wsdl:input message=\"tns:ParseResumeSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:ParseResumeSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetAccountInfo\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets the Member Account information.</wsdl:documentation>\r\n
+        \     <wsdl:input message=\"tns:GetAccountInfoSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:GetAccountInfoSoapOut\" />\r\n    </wsdl:operation>\r\n  </wsdl:portType>\r\n
+        \ <wsdl:binding name=\"ResumeServiceSoap\" type=\"tns:ResumeServiceSoap\">\r\n
+        \   <soap:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"ParseResume\">\r\n      <soap:operation soapAction=\"http://services.resumeparsing.com/ParseResume\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetAccountInfo\">\r\n      <soap:operation soapAction=\"http://services.resumeparsing.com/GetAccountInfo\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"ResumeServiceSoap12\" type=\"tns:ResumeServiceSoap\">\r\n
+        \   <soap12:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"ParseResume\">\r\n      <soap12:operation soapAction=\"http://services.resumeparsing.com/ParseResume\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetAccountInfo\">\r\n      <soap12:operation soapAction=\"http://services.resumeparsing.com/GetAccountInfo\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:service name=\"ResumeService\">\r\n    <wsdl:port name=\"ResumeServiceSoap\"
+        binding=\"tns:ResumeServiceSoap\">\r\n      <soap:address location=\"http://services.resumeparsing.com/ResumeService.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"ResumeServiceSoap12\" binding=\"tns:ResumeServiceSoap12\">\r\n
+        \     <soap12:address location=\"http://services.resumeparsing.com/ResumeService.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+    http_version: 
+  recorded_at: Mon, 17 Feb 2014 16:05:49 GMT
+- request:
+    method: post
+    uri: http://services.resumeparsing.com/ResumeService.asmx
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://services.resumeparsing.com/"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><tns:GetAccountInfo><tns:request><tns:AccountId></tns:AccountId><tns:ServiceKey></tns:ServiceKey></tns:request></tns:GetAccountInfo></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"http://services.resumeparsing.com/GetAccountInfo"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '468'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Mon, 17 Feb 2014 16:05:49 GMT
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Content-Length:
+      - '577'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetAccountInfoResponse
+        xmlns="http://services.resumeparsing.com/"><GetAccountInfoResult><Code>Success</Code><Message>Successful
+        transaction</Message><TotalTransactions>12</TotalTransactions><TransactionsRemaining>188</TransactionsRemaining><ExpirationDate>3/13/2014</ExpirationDate></GetAccountInfoResult></GetAccountInfoResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Mon, 17 Feb 2014 16:05:49 GMT
+recorded_with: VCR 2.8.0
