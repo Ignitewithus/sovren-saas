@@ -11,6 +11,7 @@ require 'webmock'
 require 'pry'
 
 VCR.configure do |c|
+  #c.ignore_request
   c.cassette_library_dir = 'spec/vcr'
   c.hook_into :webmock
   c.configure_rspec_metadata!
