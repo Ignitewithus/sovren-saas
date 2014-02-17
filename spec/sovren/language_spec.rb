@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sovren::Language do
+describe SovrenSaas::Language do
   use_natural_assertions
 
   context ".parse" do
@@ -8,7 +8,7 @@ describe Sovren::Language do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/languages.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::Language.parse(xml) }
+      When(:result) { SovrenSaas::Language.parse(xml) }
 
       Then { result.length == 3 }
       Then { result.first.language_code == "ps" }
@@ -18,7 +18,7 @@ describe Sovren::Language do
     end
 
     context "no languages" do
-      When(:result) { Sovren::Language.parse(nil) }
+      When(:result) { SovrenSaas::Language.parse(nil) }
 
       Then { result == Array.new }
     end

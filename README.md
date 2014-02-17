@@ -1,4 +1,4 @@
-# Sovren
+# SovrenSaas
 
 A simple ruby gem that parses a resume using the sovren resume parser and returns the resume back as a ruby object.
 
@@ -21,7 +21,7 @@ Or install it yourself as:
 1. Create a client
 
     ```ruby
-    client = Sovren::Client.new(endpoint: "http://yourhost.com/SovrenConvertAndParse/ConvertAndParse.asmx?WSDL", username: "http basic username (optional)", password: "http basic password (optional)")
+    client = SovrenSaas::Client.new(endpoint: "http://yourhost.com/SovrenConvertAndParse/ConvertAndParse.asmx?WSDL", username: "http basic username (optional)", password: "http basic password (optional)")
     ```
 
 2. Parse a resume

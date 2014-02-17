@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class NonXMLResume
     attr_accessor :text_resume
 

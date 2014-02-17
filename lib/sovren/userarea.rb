@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class UserArea
     attr_accessor :language, :country, :description, :months_worked, :best_fit, :fit_percentage, :parse_time
 

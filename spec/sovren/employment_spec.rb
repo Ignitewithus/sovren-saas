@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Sovren::Employment do
+describe SovrenSaas::Employment do
   use_natural_assertions
 
   context ".current_employer?" do
-    When(:employment) {Sovren::Employment.new}
+    When(:employment) {SovrenSaas::Employment.new}
     Then { employment.current_employer? == false }
   end
 
@@ -13,7 +13,7 @@ describe Sovren::Employment do
       Given(:raw_employment_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/employment.xml')) }
       Given(:employment_xml) { Nokogiri::XML.parse(raw_employment_xml) }
 
-      When(:result) { Sovren::Employment.parse(employment_xml) }
+      When(:result) { SovrenSaas::Employment.parse(employment_xml) }
 
       Then { result.length == 4 }
       Then { result.first.employer == "Technical Difference" }
@@ -33,7 +33,7 @@ describe Sovren::Employment do
       Given(:raw_employment_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/employment_sparse.xml')) }
       Given(:employment_xml) { Nokogiri::XML.parse(raw_employment_xml) }
 
-      When(:result) { Sovren::Employment.parse(employment_xml) }
+      When(:result) { SovrenSaas::Employment.parse(employment_xml) }
 
       Then { result.length == 1 }
       Then { result.first.employer == "Technical Difference" }

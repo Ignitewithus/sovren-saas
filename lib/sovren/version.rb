@@ -1,3 +1,3 @@
-module Sovren
-  VERSION = "0.0.5"
+module SovrenSaas
+  VERSION = "0.0.1"
 end

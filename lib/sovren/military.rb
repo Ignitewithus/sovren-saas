@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Military
     attr_accessor :country_served, :branch, :rank_achieved, :recognition_achieved, :discharge_status, :start_date, :end_date
 

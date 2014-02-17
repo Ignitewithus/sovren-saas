@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sovren/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "sovren"
-  spec.version       = Sovren::VERSION
-  spec.authors       = ["Eric Fleming"]
-  spec.email         = ["efleming@gmail.com"]
-  spec.description   = "This is a gem used for parsing resumes using the Sovren resume parser service."
+  spec.name          = "sovren_saas"
+  spec.version       = SovrenSaas::VERSION
+  spec.authors       = ["Mark Montroy"]
+  spec.email         = ["mark@ignitewithus.com"]
+  spec.description   = "This is a gem used for parsing resumes using the Sovren resume parser service. Based off the standalone Sovren gem by Eric Flemming"
   spec.summary       = "This is a gem used for parsing resumes using the Sovren resume parser service."
-  spec.homepage      = "http://github.com/efleming/sovren"
+  spec.homepage      = "http://github.com/ignitewithus/sovren-saas"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

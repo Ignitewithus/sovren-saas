@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Association
     attr_accessor :name, :role
 

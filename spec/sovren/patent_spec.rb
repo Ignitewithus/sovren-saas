@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sovren::Patent do
+describe SovrenSaas::Patent do
   use_natural_assertions
 
   context ".parse" do
@@ -8,7 +8,7 @@ describe Sovren::Patent do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/patents.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::Patent.parse(xml) }
+      When(:result) { SovrenSaas::Patent.parse(xml) }
 
       Then { result.length == 1 }
       Then { result.first.title == "Method and Apparatus for Removing Corn Kernels From Dentures" }
@@ -18,7 +18,7 @@ describe Sovren::Patent do
     end
 
     context "no patents" do
-      When(:result) { Sovren::Patent.parse(nil) }
+      When(:result) { SovrenSaas::Patent.parse(nil) }
 
       Then { result == Array.new }
     end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Sovren::Client do
-  Given(:sovren_client) { Sovren::Client.new(endpoint: "http://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
+describe SovrenSaas::Client do
+  Given(:sovren_client) { SovrenSaas::Client.new(endpoint: "http://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
 
   context 'init' do
     Then { sovren_client.should_not be_nil }
@@ -17,20 +17,20 @@ describe Sovren::Client do
   end
 
   describe 'parsing' do
-    Given(:sovren_client) { Sovren::Client.new(endpoint: "http://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
+    Given(:sovren_client) { SovrenSaas::Client.new(endpoint: "http://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
     Given(:resume) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/ResumeSample.doc')) }
 
     context ".parse", vcr: {cassette_name: 'parsed_resume_new'} do
       When(:result) { sovren_client.parse(resume) }
       #Then {binding.pry}
-      Then { result.class.should == Sovren::Resume }
+      Then { result.class.should == SovrenSaas::Resume }
     end
 
   end
 
   describe 'get account info' do
     context ".get_account_info", vcr: {cassette_name: 'get_acct_info'} do
-      Given(:sovren_client) { Sovren::Client.new(endpoint: "http://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
+      Given(:sovren_client) { SovrenSaas::Client.new(endpoint: "http://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
       When(:result) { sovren_client.get_account_info }
       Then { !result.blank? }
     end

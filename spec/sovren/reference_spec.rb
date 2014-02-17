@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Sovren::Reference do
+describe SovrenSaas::Reference do
   use_natural_assertions
 
-  When(:reference) { Sovren::Reference.new }
+  When(:reference) { SovrenSaas::Reference.new }
 
   Then { reference.should respond_to :name }
   Then { reference.should respond_to :title }
@@ -15,7 +15,7 @@ describe Sovren::Reference do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/references.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::Reference.parse(xml) }
+      When(:result) { SovrenSaas::Reference.parse(xml) }
 
       Then { result.length == 1 }
       Then { result.first.name == "Babs Smith" }
@@ -25,7 +25,7 @@ describe Sovren::Reference do
     end
 
     context "no references" do
-      When(:result) { Sovren::Reference.parse(nil) }
+      When(:result) { SovrenSaas::Reference.parse(nil) }
 
       Then { result == Array.new }
     end

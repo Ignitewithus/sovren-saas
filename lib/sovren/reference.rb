@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Reference
     attr_accessor :name, :title, :email, :phone_number
 

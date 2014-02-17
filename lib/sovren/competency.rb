@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Competency
     attr_accessor :name, :months, :last_used_date
 

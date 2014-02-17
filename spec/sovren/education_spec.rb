@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Sovren::Education do
+describe SovrenSaas::Education do
   use_natural_assertions
 
   context ".graduated?" do
-    When(:education) {Sovren::Education.new}
+    When(:education) {SovrenSaas::Education.new}
     Then { education.graduated? == false }
   end
 
@@ -13,7 +13,7 @@ describe Sovren::Education do
         Given(:raw_education_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/education.xml')) }
         Given(:education_xml) { Nokogiri::XML.parse(raw_education_xml) }
 
-        When(:result) { Sovren::Education.parse(education_xml) }
+        When(:result) { SovrenSaas::Education.parse(education_xml) }
 
         Then { result.length == 2 }
         Then { result.first.school_name == "California State University" }
@@ -36,7 +36,7 @@ describe Sovren::Education do
         Given(:raw_education_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/education_sparse.xml')) }
         Given(:education_xml) { Nokogiri::XML.parse(raw_education_xml) }
 
-        When(:result) { Sovren::Education.parse(education_xml) }
+        When(:result) { SovrenSaas::Education.parse(education_xml) }
 
         Then { result.length == 1 }
         Then { result.first.school_name == "California State University" }

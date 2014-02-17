@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Sovren::ContactInformation do
+describe SovrenSaas::ContactInformation do
   use_natural_assertions
 
-  Given(:contact_information) { Sovren::ContactInformation.new }
+  Given(:contact_information) { SovrenSaas::ContactInformation.new }
 
   Then { contact_information.should respond_to :first_name }
   Then { contact_information.should respond_to :middle_name }
@@ -28,7 +28,7 @@ describe Sovren::ContactInformation do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/contact_information.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::ContactInformation.parse(xml) }
+      When(:result) { SovrenSaas::ContactInformation.parse(xml) }
 
       Then { result.first_name == "John" }
       Then { result.middle_name == "F." }
@@ -56,7 +56,7 @@ describe Sovren::ContactInformation do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/contact_information_sparse.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::ContactInformation.parse(xml) }
+      When(:result) { SovrenSaas::ContactInformation.parse(xml) }
 
       Then { result.first_name == "John" }
       Then { result.last_name == "Adams" }
@@ -64,7 +64,7 @@ describe Sovren::ContactInformation do
     end  
 
     context "no contact info" do
-      When(:result) { Sovren::ContactInformation.parse(nil) }
+      When(:result) { SovrenSaas::ContactInformation.parse(nil) }
 
       Then { result == nil }
     end  

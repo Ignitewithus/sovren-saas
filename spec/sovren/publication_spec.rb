@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Sovren::Publication do
+describe SovrenSaas::Publication do
   use_natural_assertions
 
-  When(:publication) { Sovren::Publication.new }
+  When(:publication) { SovrenSaas::Publication.new }
 
   Then { publication.should respond_to :type }
   Then { publication.should respond_to :title }
@@ -31,7 +31,7 @@ describe Sovren::Publication do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/publications.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::Publication.parse(xml) }
+      When(:result) { SovrenSaas::Publication.parse(xml) }
 
       Then { result.length == 4 }
       Then { result[0].type == "Article" }
@@ -61,7 +61,7 @@ describe Sovren::Publication do
     end
 
     context "no publications" do
-      When(:result) { Sovren::Publication.parse(nil) }
+      When(:result) { SovrenSaas::Publication.parse(nil) }
 
       Then { result == Array.new }
     end

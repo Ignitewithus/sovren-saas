@@ -1,6 +1,6 @@
 require 'json'
 
-module Sovren
+module SovrenSaas
   class Resume
     attr_accessor :executive_summary, :objective, :contact_information, :education_history, :employment_history, :certifications, :competencies, :achievements, :associations, :languages, :military_history, :patent_history, :publication_history, :references, :non_xml_resume, :user_area
 

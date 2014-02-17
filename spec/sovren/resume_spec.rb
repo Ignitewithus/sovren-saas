@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Sovren::Resume do
-  Given(:resume) { Sovren::Resume.new }
+describe SovrenSaas::Resume do
+  Given(:resume) { SovrenSaas::Resume.new }
 
   Then { resume.should respond_to :executive_summary }
   Then { resume.should respond_to :objective }
@@ -22,7 +22,7 @@ describe Sovren::Resume do
     use_natural_assertions
     Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/resume.xml')) }
 
-    When(:result) { Sovren::Resume.parse(raw_xml) }
+    When(:result) { SovrenSaas::Resume.parse(raw_xml) }
 
     Then { result.executive_summary.length == 119 }
     Then { result.objective.length == 84 }
@@ -34,7 +34,7 @@ describe Sovren::Resume do
     Then { result.associations.length == 1 }
     Then { result.certifications.length == 4 }
     Then { result.languages.length == 3 }
-    Then { result.military_history.class == Sovren::Military }
+    Then { result.military_history.class == SovrenSaas::Military }
     Then { result.patent_history.length == 1 }
     Then { result.publication_history.length == 4 }
     Then { result.references.length == 1 }

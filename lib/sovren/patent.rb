@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Patent
     attr_accessor :title, :description, :inventor_name, :patent_id
 

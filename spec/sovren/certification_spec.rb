@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sovren::Certification do
+describe SovrenSaas::Certification do
   use_natural_assertions
 
   context ".parse" do
@@ -8,7 +8,7 @@ describe Sovren::Certification do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/certifications.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::Certification.parse(xml) }
+      When(:result) { SovrenSaas::Certification.parse(xml) }
 
       Then { result.length == 4 }
       Then { result[2].name == "Sun Secure Global Desktop (Tarantella) System Administration" }
@@ -17,7 +17,7 @@ describe Sovren::Certification do
     end
 
     context "no competencies" do
-      When(:result) { Sovren::Certification.parse(nil) }
+      When(:result) { SovrenSaas::Certification.parse(nil) }
 
       Then { result == Array.new }
     end

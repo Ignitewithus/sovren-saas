@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Language
     attr_accessor :language_code, :read, :write, :speak
 

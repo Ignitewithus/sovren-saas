@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sovren::Association do
+describe SovrenSaas::Association do
   use_natural_assertions
 
   context ".parse" do
@@ -8,7 +8,7 @@ describe Sovren::Association do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/associations.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::Association.parse(xml) }
+      When(:result) { SovrenSaas::Association.parse(xml) }
 
       Then { result.length == 1 }
       Then { result.first.name == "Association of Retired Military Document Examiners" }
@@ -16,7 +16,7 @@ describe Sovren::Association do
     end
 
     context "no associations" do
-      When(:result) { Sovren::Association.parse(nil) }
+      When(:result) { SovrenSaas::Association.parse(nil) }
 
       Then { result == Array.new }
     end

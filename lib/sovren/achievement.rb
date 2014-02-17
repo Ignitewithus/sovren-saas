@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Achievement
     attr_accessor :description
 

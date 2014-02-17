@@ -4,7 +4,7 @@ require 'savon'
 require 'httpclient'
 require 'nokogiri'
 
-module Sovren
+module SovrenSaas
   class << self
     FIELDS = [:endpoint, :username, :password, :timeout, :hard_time_out_multiplier, :parser_configuration_params]
     attr_accessor(*FIELDS)

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sovren::Military do
+describe SovrenSaas::Military do
   use_natural_assertions
 
   context ".parse" do
@@ -8,7 +8,7 @@ describe Sovren::Military do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/military.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::Military.parse(xml) }
+      When(:result) { SovrenSaas::Military.parse(xml) }
 
       Then { result.country_served == "US" }
       Then { result.branch == "Army" }
@@ -20,7 +20,7 @@ describe Sovren::Military do
     end
 
     context "no military history" do
-      When(:result) { Sovren::Military.parse(nil) }
+      When(:result) { SovrenSaas::Military.parse(nil) }
 
       Then { result == nil }
     end

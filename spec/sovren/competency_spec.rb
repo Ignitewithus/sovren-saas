@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sovren::Competency do
+describe SovrenSaas::Competency do
   use_natural_assertions
 
   context ".parse" do
@@ -8,7 +8,7 @@ describe Sovren::Competency do
       Given(:raw_xml) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/competencies.xml')) }
       Given(:xml) { Nokogiri::XML.parse(raw_xml) }
 
-      When(:result) { Sovren::Competency.parse(xml) }
+      When(:result) { SovrenSaas::Competency.parse(xml) }
 
       Then { result.length == 50 }
       Then { result.first.name == "MARKETING" }
@@ -17,7 +17,7 @@ describe Sovren::Competency do
     end
 
     context "no competencies" do
-      When(:result) { Sovren::Competency.parse(nil) }
+      When(:result) { SovrenSaas::Competency.parse(nil) }
 
       Then { result == Array.new }
     end

@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Employment
     attr_accessor :employer, :division, :city, :state, :country, :title, :description, :start_date, :end_date, :current_employer
 

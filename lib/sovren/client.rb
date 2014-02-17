@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Client
     attr_reader :endpoint, :username, :password, :timeout, :hard_time_out_multiplier, :parser_configuration_params, :account_id, :service_key
 

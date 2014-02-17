@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Certification
     attr_accessor :name, :description, :effective_date
 

@@ -1,4 +1,4 @@
-module Sovren
+module SovrenSaas
   class Education
     attr_accessor :school_name, :city, :state, :country, :degree_name, :degree_type, :major, :minor, :gpa, :gpa_out_of, :start_date, :end_date, :graduated
     
