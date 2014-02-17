@@ -18,12 +18,10 @@ module Sovren
     end
 
     def connection
-      # WebMock.allow_net_connect!
       Savon.client(wsdl: @endpoint, log: true)
     end
 
     def parse(file)
-      # WebMock.allow_net_connect!
       result = connection.call(:parse_resume) do |c|
         c.message({"request" => {
             "AccountId" => @account_id,
@@ -37,7 +35,7 @@ module Sovren
     end
 
     def get_account_info
-      # WebMock.allow_net_connect!
+      WebMock.allow_net_connect!
       result = connection.call(:get_account_info) do |c|
         c.message({"request" => {
             "AccountId" => @account_id,
