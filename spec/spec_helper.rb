@@ -6,7 +6,7 @@ require 'bundler/setup'
 require 'rspec/given'
 require 'httpclient'
 require 'vcr'
-require 'sovren'
+require 'sovren_saas'
 require 'webmock'
 require 'pry'
 

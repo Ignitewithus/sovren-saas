@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sovren/version'
+require 'sovren_saas/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sovren_saas"
@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["mark@ignitewithus.com"]
   spec.description   = "This is a gem used for parsing resumes using the Sovren resume parser service. Based off the standalone Sovren gem by Eric Flemming"
   spec.summary       = "This is a gem used for parsing resumes using the Sovren resume parser service."
-  spec.homepage      = "http://github.com/ignitewithus/sovren-saas"
+  spec.homepage      = "http://github.com/ignitewithus/sovren_saas-saas"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock", '< 1.10'
   spec.add_development_dependency "simplecov"
 
-  spec.requirements << "Access to a sovren resume parser server."
+  spec.requirements << "Access to a sovren_saas resume parser server."
 end

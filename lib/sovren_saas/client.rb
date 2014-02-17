@@ -2,7 +2,7 @@ module SovrenSaas
   class Client
     attr_reader :endpoint, :username, :password, :timeout, :hard_time_out_multiplier, :parser_configuration_params, :account_id, :service_key
 
-    #Initialize the client class that will be used for all sovren requests.
+    #Initialize the client class that will be used for all sovren_saas requests.
     #
     # @param [Hash] options
     # @option options String :endpoint The url that the web service is located at
