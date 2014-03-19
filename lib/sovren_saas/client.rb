@@ -35,7 +35,6 @@ module SovrenSaas
     end
 
     def get_account_info
-      WebMock.allow_net_connect!
       result = connection.call(:get_account_info) do |c|
         c.message({"request" => {
             "AccountId" => @account_id,
