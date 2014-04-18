@@ -14,17 +14,17 @@ module SovrenSaas
       @account_id = options[:account_id]
       @service_key = options[:service_key]
       @configuration = options[:parser_configuration_params] || "_100000_0_00000010_0000000110101100_1_0000000000000111111102000000000010000100000000000000"
-      @endpoint =   options[:endpoint] || "https://services.resumeparsing.com/ResumeService.asmx?wsdl"
-      @https_endpoint =   options[:https_endpoint] || "https://services.resumeparsing.com/ResumeService.asmx"
+      @endpoint = options[:endpoint] || "https://services.resumeparsing.com/ResumeService.asmx?wsdl"
+      @https_endpoint = options[:https_endpoint] || "https://services.resumeparsing.com/ResumeService.asmx"
     end
 
     def connection
       # the Sovren wsdl references the http version of all the calls, so make sure we point to the https version
-      Savon.client(wsdl: @endpoint, log: true, endpoint: @https_endpoint )
+      Savon.client(wsdl: @endpoint, log: true, endpoint: @https_endpoint)
     end
 
     def parse(file)
-      result = connection.call(:parse_resume ) do |c|
+      result = connection.call(:parse_resume) do |c|
         c.message({"request" => {
             "AccountId" => @account_id,
             "ServiceKey" => @service_key,
@@ -35,6 +35,11 @@ module SovrenSaas
       end
       Resume.parse(result.body[:parse_resume_response][:parse_resume_result][:xml])
     end
+
+    def parse_hrxml(hrxml)
+      Resume.parse(hrxml)
+    end
+
 
     def get_account_info
       result = connection.call(:get_account_info) do |c|
