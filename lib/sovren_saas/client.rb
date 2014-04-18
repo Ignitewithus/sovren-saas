@@ -16,11 +16,12 @@ module SovrenSaas
       @configuration = options[:parser_configuration_params] || "_100000_0_00000010_0000000110101100_1_0000000000000111111102000000000010000100000000000000"
       @endpoint = options[:endpoint] || "https://services.resumeparsing.com/ResumeService.asmx?wsdl"
       @https_endpoint = options[:https_endpoint] || "https://services.resumeparsing.com/ResumeService.asmx"
+      @enable_log = options[:enable_log] || false
     end
 
     def connection
       # the Sovren wsdl references the http version of all the calls, so make sure we point to the https version
-      Savon.client(wsdl: @endpoint, log: true, endpoint: @https_endpoint)
+      Savon.client(wsdl: @endpoint, log: @enable_log, endpoint: @https_endpoint)
     end
 
     def parse(file)
