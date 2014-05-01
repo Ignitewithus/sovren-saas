@@ -2,7 +2,7 @@ require 'json'
 
 module SovrenSaas
   class Resume
-    attr_accessor :executive_summary, :objective, :contact_information, :education_history, :employment_history, :certifications, :competencies, :achievements, :associations, :languages, :military_history, :patent_history, :publication_history, :references, :non_xml_resume, :user_area
+    attr_accessor :executive_summary, :objective, :contact_information, :education_history, :employment_history, :certifications, :competencies, :achievements, :associations, :languages, :military_history, :patent_history, :publication_history, :references, :non_xml_resume, :user_area, :warnings
 
     def self.parse(resume)
       parsed_resume = Nokogiri::XML.parse(resume)
@@ -23,6 +23,7 @@ module SovrenSaas
       resume.references = Reference.parse(parsed_resume.css('References').first)
       resume.non_xml_resume =  NonXMLResume.parse(parsed_resume.css('NonXMLResume').first)
       resume.user_area =   UserArea.parse(parsed_resume.css('UserArea'))
+      resume.warnings = Warning.parse(parsed_resume)
       resume
     end
   end

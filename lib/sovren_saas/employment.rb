@@ -1,6 +1,6 @@
 module SovrenSaas
   class Employment
-    attr_accessor :employer, :division, :city, :state, :country, :title, :description, :start_date, :end_date, :current_employer
+    attr_accessor :employer, :division, :city, :state, :country, :title, :description, :start_date, :end_date, :current_employer, :position
 
     def self.parse(employment_history)
       return Array.new if employment_history.nil?
@@ -17,6 +17,7 @@ module SovrenSaas
           e.start_date = Date.parse(position.css('StartDate').text) rescue nil
           e.current_employer = position['currentEmployer'] == "true"
           e.end_date = e.current_employer ? nil : (Date.parse(position.css('EndDate').text) rescue nil)
+          e.position =  item.css('sov|Id').text rescue nil
           result.push(e)
         end
       end
