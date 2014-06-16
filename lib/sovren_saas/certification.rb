@@ -4,11 +4,11 @@ module SovrenSaas
 
     def self.parse(certifications)
       return Array.new if certifications.nil?
-      result = certifications.css('LicenseOrCertification').collect do |item|
+      result = certifications.css('hrxml|LicenseOrCertification', {hrxml:HRXML_NS}).collect do |item|
         c = Certification.new
-        c.name = item.css('Name').text
-        c.description = item.css('Description').text
-        c.effective_date = Date.parse(item.css('EffectiveDate FirstIssuedDate AnyDate').text) rescue nil
+        c.name = item.css('hrxml|Name', {hrxml:HRXML_NS}).text
+        c.description = item.css('hrxml|Description', {hrxml:HRXML_NS}).text
+        c.effective_date = Date.parse(item.css('hrxml|EffectiveDate hrxml|FirstIssuedDate hrxml|AnyDate', {hrxml:HRXML_NS}).text) rescue nil
         c
       end
       result

@@ -4,12 +4,12 @@ module SovrenSaas
 
     def self.parse(references)
       return Array.new if references.nil?
-      result = references.css('Reference').collect do |item|
+      result = references.css('hrxml|Reference', {hrxml:HRXML_NS}).collect do |item|
         r = Reference.new
-        r.name = item.css('PersonName FormattedName').text
-        r.title = item.css('PositionTitle').text
-        r.email = item.css('ContactMethod InternetEmailAddress').first.text rescue nil
-        r.phone_number = item.css('ContactMethod Telephone FormattedNumber').first.text rescue nil
+        r.name = item.css('hrxml|PersonName hrxml|FormattedName', {hrxml:HRXML_NS}).text
+        r.title = item.css('hrxml|PositionTitle', {hrxml:HRXML_NS}).text
+        r.email = item.css('hrxml|ContactMethod hrxml|InternetEmailAddress', {hrxml:HRXML_NS}).first.text rescue nil
+        r.phone_number = item.css('hrxml|ContactMethod hrxml|Telephone hrxml|FormattedNumber', {hrxml:HRXML_NS}).first.text rescue nil
         r
       end
       result

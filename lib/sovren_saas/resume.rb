@@ -7,22 +7,22 @@ module SovrenSaas
     def self.parse(resume)
       parsed_resume = Nokogiri::XML.parse(resume)
       resume = self.new
-      resume.executive_summary = parsed_resume.css('ExecutiveSummary').text
-      resume.objective = parsed_resume.css('Objective').text
-      resume.contact_information = ContactInformation.parse(parsed_resume.css('ContactInfo').first)
-      resume.education_history = Education.parse(parsed_resume.css('EducationHistory').first)
-      resume.employment_history = Employment.parse(parsed_resume.css('EmploymentHistory').first)
-      resume.certifications = Certification.parse(parsed_resume.css('LicensesAndCertifications').first)
-      resume.competencies = Competency.parse(parsed_resume.css('Qualifications').first)
-      resume.achievements = Achievement.parse(parsed_resume.css('Achievements').first)
-      resume.associations = Association.parse(parsed_resume.css('Associations').first)
-      resume.languages = Language.parse(parsed_resume.css('Languages').first)
-      resume.military_history = Military.parse(parsed_resume.css('MilitaryHistory').first)
-      resume.patent_history = Patent.parse(parsed_resume.css('PatentHistory').first)
-      resume.publication_history = Publication.parse(parsed_resume.css('PublicationHistory').first)
-      resume.references = Reference.parse(parsed_resume.css('References').first)
-      resume.non_xml_resume =  NonXMLResume.parse(parsed_resume.css('NonXMLResume').first)
-      resume.user_area =   UserArea.parse(parsed_resume.css('UserArea'))
+      resume.executive_summary = parsed_resume.css('hrxml|ExecutiveSummary', {hrxml:HRXML_NS}).text
+      resume.objective = parsed_resume.css('hrxml|Objective', {hrxml:HRXML_NS}).text
+      resume.contact_information = ContactInformation.parse(parsed_resume.css('hrxml|ContactInfo', {hrxml:HRXML_NS}).first)
+      resume.education_history = Education.parse(parsed_resume.css('hrxml|EducationHistory', {hrxml:HRXML_NS}).first)
+      resume.employment_history = Employment.parse(parsed_resume.css('hrxml|EmploymentHistory', {hrxml:HRXML_NS}).first)
+      resume.certifications = Certification.parse(parsed_resume.css('hrxml|LicensesAndCertifications', {hrxml:HRXML_NS}).first)
+      resume.competencies = Competency.parse(parsed_resume.css('hrxml|Qualifications', {hrxml:HRXML_NS}).first)
+      resume.achievements = Achievement.parse(parsed_resume.css('hrxml|Achievements', {hrxml:HRXML_NS}).first)
+      resume.associations = Association.parse(parsed_resume.css('hrxml|Associations', {hrxml:HRXML_NS}).first)
+      resume.languages = Language.parse(parsed_resume.css('hrxml|Languages', {hrxml:HRXML_NS}).first)
+      resume.military_history = Military.parse(parsed_resume.css('hrxml|MilitaryHistory', {hrxml:HRXML_NS}).first)
+      resume.patent_history = Patent.parse(parsed_resume.css('hrxml|PatentHistory', {hrxml:HRXML_NS}).first)
+      resume.publication_history = Publication.parse(parsed_resume.css('hrxml|PublicationHistory', {hrxml:HRXML_NS}).first)
+      resume.references = Reference.parse(parsed_resume.css('hrxml|References', {hrxml:HRXML_NS}).first)
+      resume.non_xml_resume =  NonXMLResume.parse(parsed_resume.css('hrxml|NonXMLResume', {hrxml:HRXML_NS}).first)
+      resume.user_area =   UserArea.parse(parsed_resume.css('hrxml|UserArea', {hrxml:HRXML_NS}))
       resume.warnings = Warning.parse(parsed_resume)
       resume
     end

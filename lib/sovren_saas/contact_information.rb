@@ -5,27 +5,27 @@ module SovrenSaas
     def self.parse(contact_information)
       return nil if contact_information.nil?
       result = self.new
-      result.first_name = contact_information.css('PersonName GivenName').collect(&:text).join(" ")
-      result.middle_name = contact_information.css('PersonName MiddleName').collect(&:text).join(" ")
-      result.last_name = contact_information.css('PersonName FamilyName').collect(&:text).join(" ")
-      result.aristocratic_title = contact_information.css('PersonName Affix[type=aristocraticTitle]').collect(&:text).join(" ")
-      result.form_of_address = contact_information.css('PersonName Affix[type=formOfAddress]').collect(&:text).join(" ")
-      result.generation = contact_information.css('PersonName Affix[type=generation]').collect(&:text).join(" ")
-      result.qualification = contact_information.css('PersonName Affix[type=qualification]').collect(&:text).join(" ")
+      result.first_name = contact_information.css('hrxml|PersonName hrxml|GivenName',{hrxml:HRXML_NS}).collect(&:text).join(" ")
+      result.middle_name = contact_information.css('hrxml|PersonName hrxml|MiddleName',{hrxml:HRXML_NS}).collect(&:text).join(" ")
+      result.last_name = contact_information.css('hrxml|PersonName hrxml|FamilyName',{hrxml:HRXML_NS}).collect(&:text).join(" ")
+      result.aristocratic_title = contact_information.css('hrxml|PersonName Affix[type=aristocraticTitle]',{hrxml:HRXML_NS}).collect(&:text).join(" ")
+      result.form_of_address = contact_information.css('hrxml|PersonName Affix[type=formOfAddress]',{hrxml:HRXML_NS}).collect(&:text).join(" ")
+      result.generation = contact_information.css('hrxml|PersonName Affix[type=generation]',{hrxml:HRXML_NS}).collect(&:text).join(" ")
+      result.qualification = contact_information.css('hrxml|PersonName Affix[type=qualification]',{hrxml:HRXML_NS}).collect(&:text).join(" ")
 
-      address = contact_information.css('PostalAddress DeliveryAddress AddressLine').collect(&:text)
+      address = contact_information.css('hrxml|PostalAddress hrxml|DeliveryAddress hrxml|AddressLine',{hrxml:HRXML_NS}).collect(&:text)
       result.address_line_1 = address[0] if address.length > 0
       result.address_line_2 = address[1] if address.length > 1
-      result.city = contact_information.css('PostalAddress').first.css('Municipality').text rescue nil
-      result.state = contact_information.css('PostalAddress').first.css('Region').text rescue nil
-      result.postal_code = contact_information.css('PostalAddress').first.css('PostalCode').text rescue nil
-      result.country = contact_information.css('PostalAddress').first.css('CountryCode').text rescue nil
+      result.city = contact_information.css('hrxml|PostalAddress',{hrxml:HRXML_NS}).first.css('hrxml|Municipality',{hrxml:HRXML_NS}).text rescue nil
+      result.state = contact_information.css('hrxml|PostalAddress',{hrxml:HRXML_NS}).first.css('hrxml|Region',{hrxml:HRXML_NS}).text rescue nil
+      result.postal_code = contact_information.css('hrxml|PostalAddress',{hrxml:HRXML_NS}).first.css('hrxml|PostalCode',{hrxml:HRXML_NS}).text rescue nil
+      result.country = contact_information.css('hrxml|PostalAddress',{hrxml:HRXML_NS}).first.css('hrxml|CountryCode',{hrxml:HRXML_NS}).text rescue nil
 
-      result.home_phone = contact_information.css('Telephone FormattedNumber').first.text rescue nil
-      result.mobile_phone = contact_information.css('Mobile FormattedNumber').first.text rescue nil
+      result.home_phone = contact_information.css('hrxml|Telephone hrxml|FormattedNumber',{hrxml:HRXML_NS}).first.text rescue nil
+      result.mobile_phone = contact_information.css('hrxml|Mobile hrxml|FormattedNumber',{hrxml:HRXML_NS}).first.text rescue nil
 
-      result.website = contact_information.css('InternetWebAddress').first.text rescue nil
-      result.email = contact_information.css('InternetEmailAddress').first.text rescue nil
+      result.website = contact_information.css('hrxml|InternetWebAddress',{hrxml:HRXML_NS}).first.text rescue nil
+      result.email = contact_information.css('hrxml|InternetEmailAddress',{hrxml:HRXML_NS}).first.text rescue nil
 
       result
     end

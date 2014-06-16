@@ -4,12 +4,12 @@ module SovrenSaas
 
     def self.parse(languages)
       return Array.new if languages.nil?
-      result = languages.css('Language').collect do |item|
+      result = languages.css('hrxml|Language',{hrxml:HRXML_NS}).collect do |item|
         c = Language.new
-        c.language_code = item.css('LanguageCode').text
-        c.read = item.css('Read').text == "true" rescue nil
-        c.write = item.css('Write').text == "true" rescue nil
-        c.speak = item.css('Speak').text == "true" rescue nil
+        c.language_code = item.css('hrxml|LanguageCode',{hrxml:HRXML_NS}).text
+        c.read = item.css('hrxml|Read',{hrxml:HRXML_NS}).text == "true" rescue nil
+        c.write = item.css('hrxml|Write',{hrxml:HRXML_NS}).text == "true" rescue nil
+        c.speak = item.css('hrxml|Speak',{hrxml:HRXML_NS}).text == "true" rescue nil
         c
       end
       result

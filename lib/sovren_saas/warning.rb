@@ -7,8 +7,8 @@ module SovrenSaas
 
     def self.parse(item)
       # pull user area warning spots
-      user_area = item.css('UserArea')
-      calculated = user_area.css('sov|ResumeUserArea sov|Sections sov|Section').collect do |s|
+      user_area = item.css('hrxml|UserArea', {hrxml:HRXML_NS})
+      calculated = user_area.css('sov|ResumeUserArea sov|Sections sov|Section', {sov:SOVREN_NS}).collect do |s|
         if s['sectionType'].to_s == CALCULATED
           w = Warning.new
           w.section = s['sectionType'].to_s
@@ -18,23 +18,23 @@ module SovrenSaas
       end
 
       # pull node specific errors - CompanyNameProbability
-      comp_names = item.css('sov|CompanyNameProbability').collect do |c|
+      comp_names = item.css('sov|CompanyNameProbability', {sov:SOVREN_NS}).collect do |c|
         if c.text.to_i <= PROBABILITY_THRESHOLD
           w = Warning.new
           w.section = "company_name"
           w.message = c.text
-          w.position = c.parent.css('sov|Id').text
+          w.position = c.parent.css('sov|Id', {sov:SOVREN_NS}).text
           w
         end
       end
 
       # pull node specific errors - PositionTitleProbability
-      pos_names = item.css('sov|PositionTitleProbability').collect do |c|
+      pos_names = item.css('sov|PositionTitleProbability', {sov:SOVREN_NS}).collect do |c|
         if c.text.to_i <= PROBABILITY_THRESHOLD
           w = Warning.new
           w.section = "position_title"
           w.message = c.text
-          w.position = c.parent.css('sov|Id').text
+          w.position = c.parent.css('sov|Id', {sov:SOVREN_NS}).text
           w
         end
       end

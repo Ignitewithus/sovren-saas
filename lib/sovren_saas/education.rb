@@ -4,19 +4,19 @@ module SovrenSaas
     
     def self.parse(education_history)
       return Array.new if education_history.nil?
-      result = education_history.css('SchoolOrInstitution').collect do |item|
+      result = education_history.css('hrxml|SchoolOrInstitution', {hrxml:HRXML_NS}).collect do |item|
         e = Education.new
-        e.school_name = item.css('SchoolName').text
-        e.city, e.state, e.country = item.css('PostalAddress Municipality, PostalAddress Region, PostalAddress CountryCode').collect(&:text)
-        e.degree_type = item.css('Degree').first['degreeType']
-        e.degree_name = item.css('Degree DegreeName').text
-        e.major = item.css('DegreeMajor Name').text
-        e.minor = item.css('DegreeMinor name').text
-        e.gpa = item.css('EducationalMeasure MeasureValue StringValue').text.to_f rescue nil
-        e.gpa_out_of = item.css('EducationalMeasure HighestPossibleValue StringValue').text.to_f rescue nil
-        e.start_date = Date.parse(item.css('DatesOfAttendance StartDate AnyDate').text) rescue nil
-        e.end_date = Date.parse(item.css('DatesOfAttendance EndDate AnyDate').text) rescue nil
-        e.graduated = item.css('Degree DegreeDate AnyDate').text != ""
+        e.school_name = item.css('hrxml|SchoolName', {hrxml:HRXML_NS}).text
+        e.city, e.state, e.country = item.css('hrxml|PostalAddress hrxml|Municipality, hrxml|PostalAddress hrxml|Region, hrxml|PostalAddress hrxml|CountryCode', {hrxml:HRXML_NS}).collect(&:text)
+        e.degree_type = item.css('hrxml|Degree', {hrxml:HRXML_NS}).first['degreeType']
+        e.degree_name = item.css('hrxml|Degree hrxml|DegreeName',{hrxml:HRXML_NS}).text
+        e.major = item.css('hrxml|DegreeMajor hrxml|Name', {hrxml:HRXML_NS}).text
+        e.minor = item.css('hrxml|DegreeMinor hrxml|name', {hrxml:HRXML_NS}).text
+        e.gpa = item.css('hrxml|EducationalMeasure hrxml|MeasureValue hrxml|StringValue', {hrxml:HRXML_NS}).text.to_f rescue nil
+        e.gpa_out_of = item.css('hrxml|EducationalMeasure hrxml|HighestPossibleValue hrxml|StringValue', {hrxml:HRXML_NS}).text.to_f rescue nil
+        e.start_date = Date.parse(item.css('hrxml|DatesOfAttendance hrxml|StartDate hrxml|AnyDate', {hrxml:HRXML_NS}).text) rescue nil
+        e.end_date = Date.parse(item.css('hrxml|DatesOfAttendance hrxml|EndDate hrxml|AnyDate', {hrxml:HRXML_NS}).text) rescue nil
+        e.graduated = item.css('hrxml|Degree hrxml|DegreeDate hrxml|AnyDate', {hrxml:HRXML_NS}).text != ""
         e
       end
       result
