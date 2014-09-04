@@ -34,7 +34,7 @@ module SovrenSaas
         }
                   })
       end
-      Resume.parse(result.body[:parse_resume_response][:parse_resume_result][:xml])
+      Resume.parse_with_response(result.body[:parse_resume_response][:parse_resume_result])
     end
 
     def parse_hrxml(hrxml)
