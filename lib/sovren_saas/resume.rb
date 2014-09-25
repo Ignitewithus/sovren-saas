@@ -6,7 +6,8 @@ module SovrenSaas
                   :education_history, :employment_history, :certifications,
                   :competencies, :achievements, :associations, :languages,
                   :military_history, :patent_history, :publication_history,
-                  :references, :non_xml_resume, :user_area, :warnings, :response_code
+                  :references, :non_xml_resume, :user_area, :warnings, :response_code,
+                  :sovren_xml
 
     def self.parse_with_response(parsed_resume_response)
       resume = self.parse(parsed_resume_response[:xml])
@@ -14,8 +15,8 @@ module SovrenSaas
       resume
     end
 
-    def self.parse(resume)
-      parsed_resume = Nokogiri::XML.parse(resume)
+    def self.parse(resume_xml)
+      parsed_resume = Nokogiri::XML.parse(resume_xml)
       resume = self.new
       resume.executive_summary = parsed_resume.css('hrxml|ExecutiveSummary', {hrxml:HRXML_NS}).text
       resume.objective = parsed_resume.css('hrxml|Objective', {hrxml:HRXML_NS}).text
@@ -34,6 +35,7 @@ module SovrenSaas
       resume.non_xml_resume =  NonXMLResume.parse(parsed_resume.css('hrxml|NonXMLResume', {hrxml:HRXML_NS}).first)
       resume.user_area =   UserArea.parse(parsed_resume.css('hrxml|UserArea', {hrxml:HRXML_NS}))
       resume.warnings = Warning.parse(parsed_resume)
+      resume.sovren_xml = SovrenXml.parse(resume_xml)
       resume
     end
   end
