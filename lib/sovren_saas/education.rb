@@ -1,12 +1,15 @@
 module SovrenSaas
   class Education
-    attr_accessor :school_name, :city, :state, :country, :degree_name, :degree_type, :major, :minor, :gpa, :gpa_out_of, :start_date, :start_date_type, :end_date, :end_date_type, :graduated, :position
+    attr_accessor :school_name, :city, :state, :country, :degree_name, :degree_type, :major,
+                  :minor, :gpa, :gpa_out_of, :start_date, :start_date_type, :end_date, :end_date_type,
+                  :graduated, :position, :school_type
     
     def self.parse(education_history)
       return Array.new if education_history.nil?
       result = education_history.css('hrxml|SchoolOrInstitution', {hrxml:HRXML_NS}).collect do |item|
         e = Education.new
         e.school_name = item.css('hrxml|SchoolName', {hrxml:HRXML_NS}).text
+        e.school_type = item.attribute('schoolType').text
         e.city, e.state, e.country = item.css('hrxml|PostalAddress hrxml|Municipality, hrxml|PostalAddress hrxml|Region, hrxml|PostalAddress hrxml|CountryCode', {hrxml:HRXML_NS}).collect(&:text)
         e.degree_type = item.css('hrxml|Degree', {hrxml:HRXML_NS}).first['degreeType']
         e.degree_name = item.css('hrxml|Degree hrxml|DegreeName',{hrxml:HRXML_NS}).text
