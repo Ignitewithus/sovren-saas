@@ -1,6 +1,7 @@
 module SovrenSaas
   class Employment
-    attr_accessor :employer, :division, :city, :state, :country, :title, :description, :start_date, :end_date, :current_employer, :position, :start_date_type, :end_date_type
+    attr_accessor :employer, :division, :city, :state, :country, :title, :description, :start_date, :end_date,
+                  :current_employer, :position, :start_date_type, :end_date_type, :job_category, :department_code
 
     def self.parse(employment_history)
       return Array.new if employment_history.nil?
@@ -14,6 +15,8 @@ module SovrenSaas
           e.city, e.state, e.country = item.css('hrxml|PositionLocation hrxml|Municipality, hrxml|PositionLocation hrxml|Region, hrxml|PositionLocation hrxml|CountryCode', {hrxml:HRXML_NS}).collect(&:text)
           e.title = position.css('hrxml|Title', {hrxml:HRXML_NS}).text
           e.description = position.css('hrxml|Description', {hrxml:HRXML_NS}).text
+          e.department_code = e.department_code(position)
+          e.job_category = e.job_category(position)
 
           e.start_date = e.node_date(position, 'StartDate')
           e.start_date_type = e.node_date_type(position, 'StartDate')
@@ -65,6 +68,30 @@ module SovrenSaas
       end
 
       type
+    end
+
+    def department_code(position)
+      department_code = nil
+
+      position.css('hrxml|JobCategory', {hrxml:HRXML_NS}).each do |category|
+        if category.css('hrxml|TaxonomyName', {hrxml:HRXML_NS}).text == 'DEPARTMENT'
+          department_code = category.css('hrxml|CategoryCode', {hrxml:HRXML_NS}).text
+        end
+      end
+
+      department_code
+    end
+
+    def job_category(position)
+      job_category = nil
+
+      position.css('hrxml|JobCategory', {hrxml:HRXML_NS}).each do |category|
+        if category.css('hrxml|TaxonomyName', {hrxml:HRXML_NS}).text == 'JOBCATEGORY'
+          job_category = category.css('hrxml|CategoryCode', {hrxml:HRXML_NS}).text
+        end
+      end
+
+      job_category
     end
 
   end
