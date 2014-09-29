@@ -25,7 +25,7 @@ module SovrenSaas
           e.end_date_type = e.node_date_type(position, 'EndDate')
 
           e.current_employer = position['currentEmployer'] == "true"
-          e.position =  item.css('sov|Id', {sov:SOVREN_NS}).text rescue nil
+          e.position =  position.css('sov|Id', {sov:SOVREN_NS}).text rescue nil
           result.push(e)
         end
       end
