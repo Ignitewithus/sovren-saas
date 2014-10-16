@@ -21,7 +21,7 @@ module SovrenSaas
 
     def connection
       # the Sovren wsdl references the http version of all the calls, so make sure we point to the https version
-      Savon.client(wsdl: @endpoint, log: @enable_log, endpoint: @https_endpoint)
+      Savon.client(wsdl: @endpoint, log: @enable_log, endpoint: @https_endpoint, ssl_version: :TLSv1 )
     end
 
     def parse(file)
