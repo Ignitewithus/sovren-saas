@@ -32,5 +32,6 @@ module SovrenSaas
   require_relative "sovren_saas/nonxmlresume"
   require_relative "sovren_saas/userarea"
   require_relative "sovren_saas/warning"
+  require_relative "sovren_saas/job_order"
 
 end

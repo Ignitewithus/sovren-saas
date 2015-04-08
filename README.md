@@ -24,6 +24,8 @@ Or install it yourself as:
 
 ## Usage Example
 
+To parse a resume:
+
 1. Create a client
 
     ```ruby
@@ -35,6 +37,22 @@ Or install it yourself as:
     ```ruby
     resume = client.parse(File.read('/path/to/your/file/resume.doc'))
     ```
+
+To parse a job order:
+
+1.) Create the client
+
+    ```ruby
+    client =SovrenSaas::Client.new(endpoint: "https://services.resumeparsing.com/ParsingService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
+    ```
+
+2.) Parse the job order
+
+     ```ruby
+     resume = client.parse_job_order(job_text)
+     ```
+    * note that only parsing jobs as text is currently supported.  Support for binaries still needs to be done.
+
 
 ## Contributing
 
