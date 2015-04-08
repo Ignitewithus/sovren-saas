@@ -21,7 +21,9 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 1.9.2'
 
   spec.add_dependency "savon", "~> 2.3.0"
-  spec.add_dependency "httpclient", "~> 2.5"
+
+  spec.add_dependency "httpclient", "~> 2.5.3"
+
   spec.add_dependency "nokogiri", "~> 1.5.9"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
@@ -32,6 +34,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock", '< 1.10'
   spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "pry-rescue"
+  spec.add_development_dependency "pry-stack_explorer"
 
   spec.requirements << "Access to a sovren_saas resume parser server."
 end

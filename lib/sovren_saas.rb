@@ -34,4 +34,7 @@ module SovrenSaas
   require_relative "sovren_saas/warning"
   require_relative "sovren_saas/response_code"
   require_relative "sovren_saas/sovren_xml"
+  require_relative "sovren_saas/job_order"
+
+
 end

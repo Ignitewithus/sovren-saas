@@ -27,11 +27,11 @@ module SovrenSaas
     def parse(file)
       result = connection.call(:parse_resume) do |c|
         c.message({"request" => {
-            "AccountId" => @account_id,
-            "ServiceKey" => @service_key,
-            "FileBytes" => Base64.encode64(file),
-            "Configuration" => @configuration
-        }
+                      "AccountId" => @account_id,
+                      "ServiceKey" => @service_key,
+                      "FileBytes" => Base64.encode64(file),
+                      "Configuration" => @configuration
+                  }
                   })
       end
       Resume.parse_with_response(result.body[:parse_resume_response][:parse_resume_result])
@@ -42,12 +42,26 @@ module SovrenSaas
     end
 
 
+    def parse_job_order(job_text)
+      result = connection.call(:parse_job_order) do |c|
+        c.message({"request" => {
+                      "AccountId" => @account_id,
+                      "ServiceKey" => @service_key,
+                      "FileText" => job_text,
+                      "Configuration" => @configuration
+                  }
+                  })
+      end
+      result
+    end
+
+
     def get_account_info
       result = connection.call(:get_account_info) do |c|
         c.message({"request" => {
-            "AccountId" => @account_id,
-            "ServiceKey" => @service_key
-        }
+                      "AccountId" => @account_id,
+                      "ServiceKey" => @service_key
+                  }
                   })
       end
       result
