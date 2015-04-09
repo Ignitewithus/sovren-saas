@@ -19,22 +19,27 @@ describe SovrenSaas::Client do
   describe 'parsing' do
     Given(:sovren_client) { SovrenSaas::Client.new(endpoint: "http://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
     Given(:resume) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/ResumeSample.doc')) }
-
-    context ".parse", vcr: {cassette_name: 'parsed_resume_new'} do
+    context ".parse", vcr: {cassette_name: 'parsed_resume'} do
       When(:result) { sovren_client.parse(resume) }
-      #Then {binding.pry}
       Then { result.class.should == SovrenSaas::Resume }
     end
-
   end
 
   describe 'get account info' do
     context ".get_account_info", vcr: {cassette_name: 'get_acct_info'} do
-      Given(:sovren_client) { SovrenSaas::Client.new(endpoint: "http://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
+      Given(:sovren_client) { SovrenSaas::Client.new(endpoint: "https://services.resumeparsing.com/ResumeService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
       When(:result) { sovren_client.get_account_info }
       Then { !result.blank? }
     end
   end
 
+  describe 'parse a job request' do
+    Given(:sovren_client) { SovrenSaas::Client.new(endpoint: "https://services.resumeparsing.com/ParsingService.asmx?wsdl", account_id: "YOUR ACCTID", service_key: "YOUR SERVICE KEY") }
+    Given(:text) { File.read(File.expand_path(File.dirname(__FILE__) + '/../support/sample_job_desc.txt')) }
+    context ".parse_job" , vcr: {cassette_name: 'job_parsed' } do
+      When(:result) { sovren_client.parse_job_order(text) }
+      Then { result.to_s.length > 0 }
+    end
+  end
 
 end
